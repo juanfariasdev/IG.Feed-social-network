@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--gray-800);
+
+    padding: 1.25rem 0;
+
+    img {
+        height: 3rem;
+
+        @media(min-width: 250px){
+            margin-right: 15px;
+        }
+    }
+
+    span {
+        color: var(--gray-100);
+        font-weight: 700;
+        font-size: 1.5rem;
+
+        @media(max-width: 250px){
+            display: none;
+        }
+    }
+}
