@@ -1,4 +1,5 @@
 import { Header } from './components/Header';
+import { Sidebar } from './components/Sidebar';
 
 
 import styles from './styles/App.module.scss';
@@ -9,9 +10,9 @@ function App() {
   return (
     <div>
       <Header />
-      
+
       <div className={styles.wrapper}>
-        <aside>sidebar</aside>
+        <Sidebar/>
         <main>main</main>
       </div>
 
