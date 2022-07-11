@@ -1,8 +1,10 @@
 import { Header } from './components/Header';
+import { Post } from './components/Posts';
 import { Sidebar } from './components/Sidebar';
 
 
 import styles from './styles/App.module.scss';
+
 import './styles/global.scss';
 
 function App() {
@@ -13,7 +15,10 @@ function App() {
 
       <div className={styles.wrapper}>
         <Sidebar/>
-        <main>main</main>
+        <main>
+          <Post/>
+          <Post/>
+        </main>
       </div>
 
     </div>
