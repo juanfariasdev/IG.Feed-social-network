@@ -1,3 +1,7 @@
+html {
+  scrollbar-color: var(--green-300) var(--gray-700);
+}
+
 /* width */
 ::-webkit-scrollbar {
     background-color: var(--gray-700);
