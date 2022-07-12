@@ -23,7 +23,7 @@ const posts = [
   publishedAt: new Date('2022-07-12 11:16:40')
 },
 {
-  id: 1,
+  id: 2,
   author: {
     avatarUrl: 'https://github.com/juanfariasdev.png',
     name: 'Erick Campos',
@@ -37,7 +37,7 @@ const posts = [
   publishedAt: new Date('2022-07-12 11:16:40')
 },
 {
-  id: 1,
+  id: 3,
   author: {
     avatarUrl: 'https://github.com/juanfariasdev.png',
     name: 'Juan Farias',
@@ -61,14 +61,15 @@ function App() {
       <div className={styles.wrapper}>
         <Sidebar/>
         <main>
-          {posts.map((post)=>(
+          {posts.map((post, key)=>(
 
             <Post
+              key={post.id}
               author={post.author}
               content={post.content}
               publishedAt={post.publishedAt}
             />
-            
+
           ))}
         </main>
       </div>
