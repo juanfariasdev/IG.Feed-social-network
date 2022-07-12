@@ -3,16 +3,6 @@
 
     display: flex;
     gap: 1rem;
-
-    & > img {
-        width: 20%;
-        max-height: 3rem;
-        max-width: 3rem;
-        min-width: 3rem;
-
-        box-sizing: initial;
-        border-radius: 8px;
-    }
 }
 
 
