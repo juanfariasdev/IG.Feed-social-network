@@ -3,17 +3,17 @@ import { Avatar } from "../Avatar";
 import styles from "./Comment.module.scss";
 
 interface IProps {
+    id: number,
     content: string,
-    onDeleteComment: Function,
-    id: number
+    onDeleteComment: (comment: number) => void,
 }
 function Comment(props: IProps){
+    const { id, content, onDeleteComment } = props;
 
     function handleDeleteComment(){
         onDeleteComment(id);
     }
 
-    const { id, content, onDeleteComment } = props;
     return (
         <div className={styles.comment}>
             <Avatar hasBorder={false} src="https://github.com/juanfariasdev.png" />

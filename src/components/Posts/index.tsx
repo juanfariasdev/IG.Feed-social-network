@@ -1,6 +1,6 @@
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR'
-import React, { ChangeEvent, FormEvent, Fragment, useState } from 'react';
+import React, { ChangeEvent, FormEvent, Fragment, InvalidEvent, useState } from 'react';
 import { Value } from 'sass';
 
 import { Avatar } from '../Avatar';
@@ -45,7 +45,7 @@ function Post(props:IProps){
         setNewCommentText(e.target.value);
     
     }
-    function handleNewCommentInvalid(e: any){
+    function handleNewCommentInvalid(e: InvalidEvent<HTMLTextAreaElement>){
         e.target.setCustomValidity('Este campo é obrigatório')
 
     }
@@ -108,8 +108,8 @@ function Post(props:IProps){
             placeholder="Deixe um comentário"
             value={newCommentText}
             required
-            onInvalid={(e) => handleNewCommentInvalid(e)}
-            onChange={(e)=> handleNewCommentChange(e)}
+            onInvalid={handleNewCommentInvalid}
+            onChange={handleNewCommentChange}
           />
           <footer>
             <button type="submit" disabled={isNewCommentEmpty}>Publicar</button>
