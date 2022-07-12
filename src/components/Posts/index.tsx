@@ -1,6 +1,6 @@
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR'
-import React, { ChangeEvent, Fragment, useState } from 'react';
+import React, { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { Value } from 'sass';
 
 import { Avatar } from '../Avatar';
@@ -32,7 +32,7 @@ function Post(props:IProps){
     
     function handleClickOnSubmit(){
         window.event?.preventDefault();
-        
+
         let lastComment = comments[comments.length -1];
         let id = lastComment? lastComment.id + 1 : 1;
 
@@ -41,8 +41,16 @@ function Post(props:IProps){
     }
 
     function handleNewCommentChange(e: ChangeEvent<HTMLTextAreaElement>){
+        e.target.setCustomValidity('')
         setNewCommentText(e.target.value);
+    
     }
+    function handleNewCommentInvalid(e: any){
+        e.target.setCustomValidity('Este campo é obrigatório')
+
+    }
+
+
     function deleteComment(commentToDelete: number){
         const commentsWithoutDeletedOne = comments.filter(comment => {
             return comment.id !== commentToDelete;
@@ -57,6 +65,8 @@ function Post(props:IProps){
         locale: ptBR,
         addSuffix: true
     });
+
+    const isNewCommentEmpty = newCommentText.length === 0;
 
     return (
     <article className={styles.post}>
@@ -97,10 +107,12 @@ function Post(props:IProps){
             name="comment"
             placeholder="Deixe um comentário"
             value={newCommentText}
-            onChange={(e)=> {handleNewCommentChange(e)}}
+            required
+            onInvalid={(e) => handleNewCommentInvalid(e)}
+            onChange={(e)=> handleNewCommentChange(e)}
           />
           <footer>
-            <button type="submit">Publicar</button>
+            <button type="submit" disabled={isNewCommentEmpty}>Publicar</button>
           </footer>
         </form>
 
