@@ -24,20 +24,30 @@ interface IProps {
 
 
 function Post(props:IProps){
-    const [comments, setComments] = useState(["Opa, beleza?"]);
+    const [comments, setComments] = useState([
+        {id: 1, content: "Opa, beleza?"}
+    ]);
     const [newCommentText, setNewCommentText] = useState('');
     const { author, content, publishedAt } = props;
     
     function handleClickOnSubmit(){
-
         window.event?.preventDefault();
+        
+        let lastComment = comments[comments.length -1];
+        let id = lastComment? lastComment.id + 1 : 1;
 
-        setComments([...comments, newCommentText]);
+        setComments([...comments, {id, content: newCommentText}]);
         setNewCommentText('')
     }
 
     function handleNewCommentChange(e: ChangeEvent<HTMLTextAreaElement>){
         setNewCommentText(e.target.value);
+    }
+    function deleteComment(commentToDelete: number){
+        const commentsWithoutDeletedOne = comments.filter(comment => {
+            return comment.id !== commentToDelete;
+        })
+        setComments(commentsWithoutDeletedOne);
     }
     
     const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
@@ -96,7 +106,13 @@ function Post(props:IProps){
 
 
         <div className={styles.commentList}>
-            {comments.map((comment)=>(<Comment key={comment} content={comment}/>))}
+            {comments.map((comment)=>(
+            <Comment 
+                key={comment.id} 
+                id={comment.id}
+                content={comment.content}
+                onDeleteComment={deleteComment}
+        />))}
         </div>
     </article>)
 }

@@ -3,11 +3,17 @@ import { Avatar } from "../Avatar";
 import styles from "./Comment.module.scss";
 
 interface IProps {
-    content: string
+    content: string,
+    onDeleteComment: Function,
+    id: number
 }
 function Comment(props: IProps){
 
-    const { content } = props;
+    function handleDeleteComment(){
+        onDeleteComment(id);
+    }
+
+    const { id, content, onDeleteComment } = props;
     return (
         <div className={styles.comment}>
             <Avatar hasBorder={false} src="https://github.com/juanfariasdev.png" />
@@ -20,7 +26,7 @@ function Comment(props: IProps){
                             <time title="12 de julho de 2022 as 8:41" dateTime='2022-07-12 8:41:52'>Cerca de 1h atrás</time>
                         </div>
 
-                        <button title="Deletar comentário">
+                        <button title="Deletar comentário" onClick={handleDeleteComment}>
                             <Trash size={24}/>
                         </button>
                     </header>
