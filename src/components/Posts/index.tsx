@@ -1,5 +1,7 @@
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR'
+import React, { ChangeEvent, Fragment, useState } from 'react';
+import { Value } from 'sass';
 
 import { Avatar } from '../Avatar';
 import { Comment } from '../Comment';
@@ -19,8 +21,25 @@ interface IProps {
     content: Content[],
     publishedAt: Date
 }
+
+
 function Post(props:IProps){
+    const [comments, setComments] = useState(["Opa, beleza?"]);
+    const [newCommentText, setNewCommentText] = useState('');
     const { author, content, publishedAt } = props;
+    
+    function handleClickOnSubmit(){
+
+        window.event?.preventDefault();
+
+        setComments([...comments, newCommentText]);
+        setNewCommentText('')
+    }
+
+    function handleNewCommentChange(e: ChangeEvent<HTMLTextAreaElement>){
+        setNewCommentText(e.target.value);
+    }
+    
     const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
         locale: ptBR
     })
@@ -45,23 +64,30 @@ function Post(props:IProps){
 
         <div className={styles.content}>
 
-            {content.map((line)=>{
+            {content.map((line, key)=>{
+                let value;
                 switch(line.type){
                     case 'paragraph':
-                        return <p>{line.content}</p>
+                        value = <p>{line.content}</p>
+                        break;
                     case 'link':
-                        return <p><a href="#">{line.content}</a></p>
+                        value = <p><a href="#">{line.content}</a></p>
+                        break;
                     default:
-                        return <span>{line.content}</span>
+                        value = <span>{line.content}</span>
+                        break;
                 }
+                return <Fragment key={key}>{value}</Fragment>;
             })}
            
         </div>
-        <form className={styles.commentForm}>
+        <form onSubmit={handleClickOnSubmit} className={styles.commentForm}>
             <strong>Deixe seu feedback</strong>
-
             <textarea 
+            name="comment"
             placeholder="Deixe um comentário"
+            value={newCommentText}
+            onChange={(e)=> {handleNewCommentChange(e)}}
           />
           <footer>
             <button type="submit">Publicar</button>
@@ -70,9 +96,7 @@ function Post(props:IProps){
 
 
         <div className={styles.commentList}>
-            <Comment/>
-            <Comment/>
-            <Comment/>
+            {comments.map((comment)=>(<Comment key={comment} content={comment}/>))}
         </div>
     </article>)
 }
