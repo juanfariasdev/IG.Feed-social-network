@@ -19,7 +19,8 @@
 
 O projeto tem como objetivo o estudo e desenvolvimento de um feed, ultilizando React.JS, TypeScript, Vite, Sass, Phosphor e Date-fns.
 
-Minha "Versão" não está fiel ao original. Resolvi transformar em algo um pouco mais "Original" e corrigindo algumas funcionalidades extras.
+Minha "Versão" não está fiel ao original. Resolvi transformá-la em algo um pouco mais "Original" e trazer algumas funcionalidades extras.
+Ao mesmo tempo, eu trouxe tecnologias estudadas anteriormente
 
 O projeto original foi desenvolvido como pratica das aulas do modulo 01 do [Ignite 2022 da Rocketseat](https://rocketseat.com.br/)
 ---
