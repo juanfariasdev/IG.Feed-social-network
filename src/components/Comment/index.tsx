@@ -36,7 +36,7 @@ function Comment(props: IProps){
                 <footer>
                     <button>
                     <ThumbsUp />
-                    Aplaudir <span>20</span>
+                    Aplaudir <span>0</span>
                     </button>
                 </footer>
             </div>
