@@ -9,10 +9,10 @@
 
 
 <p align="center">
- <a href="#sobre-o-projeto">Sobre o Projeto</a> •
- <a href="#tecnologias">Tecnologias</a> •
- <a href="#configurações-necessárias">Configurações necessárias</a> •
- <a href="#licença">Licença</a> •
+  • <a href="#sobre-o-projeto">Sobre o Projeto</a>
+  • <a href="#tecnologias">Tecnologias</a>
+  • <a href="#configurações-necessárias">Configurações necessárias</a>
+  • <a href="#licença">Licença</a>
 </p>
 
 ## 🎯 Sobre o projeto
@@ -77,7 +77,7 @@ Distribuído sob a licença MIT. Veja [LICENSE](LICENSE) para mais informações
 ---
 
 ## Autor
-Desenvolvido por [Juan Pablo Farias][https://juanpablofarias.com/] 👋
+Desenvolvido por [Juan Pablo Farias](https://juanpablofarias.com/) 👋
 
 
 ## Prints
